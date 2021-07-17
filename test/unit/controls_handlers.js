@@ -114,6 +114,17 @@
       assert.equal(transform.target.flipY, true, 'the object flipped Y');
       assert.equal(returned, true, 'action was permitted Y');
     });
+    QUnit.test('scalingYOrSkewingX changes scaleY to flip, small delta flips', function(assert) {
+      transform.target.scaleY = 1;
+      transform.target.height = 0;
+      transform.target.strokeWidth = 0;
+      console.log(transform.target.scaleY);
+      var returned = fabric.controlsUtils.scalingYOrSkewingX(eventData, transform, 200, -1);
+      console.log(transform.target.scaleY);
+      assert.equal(transform.target.scaleY, 0.8);
+      assert.equal(transform.target.flipY, true, 'the object flipped Y');
+      assert.equal(returned, true, 'action was permitted Y');
+    });
     QUnit.test('scalingYOrSkewingX blocks scaleX to flip', function(assert) {
       transform.target.scaley = 1;
       transform.target.strokeWidth = 0;
